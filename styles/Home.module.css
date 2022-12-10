@@ -107,6 +107,13 @@ a.header-link.active {
   display: flex;
   flex-direction: column;
   width: 55%;
+  background: #D8A7B1;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: 0.5s;
+}
+.card:hover {
+  background-color: #FFF;
 }
 .card > div {
   width: 100%;

@@ -43,35 +43,28 @@ export default function Bkigs({ data }) {
 
         <main className={styles.main}>
           <h2 className={styles.title}>All Blogs</h2>
+          <div className="blog-container">
+            {data?.map((item, index) => {
+              if (item.fields.date) return (
+                <div className={styles.card}>
+                  <Link
+                    href={{
+                      pathname: "/blog/[slug]",
+                      query: {
+                        slug: item.fields.title,
+                        postId: item.sys.id,
+                      },
+                    }}
+                  >
+                    <div> <a> Date: {formatDate(item?.fields?.date)}<br />Title: {item?.fields?.title}<br />Author: {item?.fields?.author}</a></div>
+                  </Link>
+                </div>
 
-          {data?.map((item, index) => {
-            if (item.fields.date) return (
-              <div className={styles.card}>
-                <Link
-                  href={{
-                    pathname: "/blog/[slug]",
-                    query: {
-                      slug: item.fields.title,
-                      postId: item.sys.id,
-                    },
-                  }}
-                >
-                  <div> <a> Date: {formatDate(item?.fields?.date)}<br />Title: {item?.fields?.title}<br />Author: {item?.fields?.author}</a></div>
-                </Link>
-              </div>
-
-            )
-          })}
-
+              )
+            })}
+          </div>
         </main>
 
-        <footer className={styles.footer}>
-
-          <span className={styles.logo}>
-            Copyright © Angelica Guzman {new Date().getFullYear()}
-          </span>
-
-        </footer>
       </div>
     </>
   );
