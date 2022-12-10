@@ -18,7 +18,10 @@ a {
 .nav-link a.header-link.active {
   font-weight: bold !important;
 }
-
+.blog-container {
+  display: flex;
+  width: 100%;
+}
 
 * {
   box-sizing: border-box;
