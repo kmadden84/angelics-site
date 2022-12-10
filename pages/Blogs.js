@@ -1,8 +1,7 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import React, { useEffect } from "react";
+import React from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { fetchEntries } from "../utils/fetchEntries";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -17,12 +16,6 @@ export async function getStaticProps() {
 }
 
 export default function Bkigs({ data }) {
-  useEffect(() => {
-    console.log("ENTRIES", data);
-  }, [data]);
-
-  const router = useRouter();
-
   function formatDate(date) {
     var d = new Date(date),
       month = '' + (d.getMonth() + 1),

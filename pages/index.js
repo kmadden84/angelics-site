@@ -20,11 +20,6 @@ export async function getStaticProps() {
 }
 
 export default function Home({ data }) {
-  useEffect(() => {
-    console.log("ENTRIES", data);
-  }, [data]);
-
-  const router = useRouter();
 
   function formatDate(date) {
     var d = new Date(date),

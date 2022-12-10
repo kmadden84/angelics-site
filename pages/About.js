@@ -23,16 +23,8 @@ export default function About() {
 
   useEffect(() => {
     if (!bioPost) fetchPost('3V9QExbnU4cXSQe58ZEXqC')
-    console.log(bioPost)
   }, [bioPost])
 
-  // const options = {
-  //   renderNode: {
-  //     [BLOCKS.PARAGRAPH]: (node, children) => (
-  //       <p>{children}</p>
-  //     ),
-  //   },
-  // };
 
   return (
     <div className={styles.container}>

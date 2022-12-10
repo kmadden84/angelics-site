@@ -24,16 +24,9 @@ export default function Cv() {
 
   useEffect(() => {
     if (!cvData) fetchPost('38DCiVbgqruqi3hbnAvcPy')
-    console.log("CV", cvData)
   }, [cvData])
 
-  // const options = {
-  //   renderNode: {
-  //     [BLOCKS.PARAGRAPH]: (node, children) => (
-  //       <p>{children}</p>
-  //     ),
-  //   },
-  // };
+
 
   return (
     <div className={styles.container}>

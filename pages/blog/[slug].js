@@ -1,13 +1,10 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../../styles/Home.module.css'
 import React, { useEffect, useState } from 'react';
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { fetchEntry } from '../../utils/fetchEntry';
 import { BLOCKS } from '@contentful/rich-text-types';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
-import Header from '../../components/header/Header';
 
 
 
