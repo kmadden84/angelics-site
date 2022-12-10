@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styles from '../styles/Home.module.css'
 import { fetchEntry } from '../utils/fetchEntry';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+import Head from "next/head";
 
 export default function Cv() {
 
@@ -30,7 +31,11 @@ export default function Cv() {
 
   return (
     <div className={styles.container}>
-
+      <Head>
+        <title>Curriculum Vitae</title>
+        <meta name="description" content="Angelica Rockford's CV" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <main className={styles.subpage}>
 
         <div dangerouslySetInnerHTML={{ __html: cvData }} />

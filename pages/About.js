@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styles from '../styles/Home.module.css'
 import { fetchEntry } from '../utils/fetchEntry';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+import Head from "next/head";
 
 export default function About() {
 
@@ -27,14 +28,23 @@ export default function About() {
 
 
   return (
-    <div className={styles.container}>
+    <>
+      <Head>
+        <title>About Angelica Rockford</title>
+        <meta name="description" content="Angelica Rockford's website and portfolio.  Blogs about anti aging and information on staying young" />
+        <meta name="keywords" content="Angelica Rockford, staying yonung, anti-aging, health, fitness, portfolio, blog, cv" />
 
-      <main className={styles.subpage}>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <div className={styles.container}>
 
-        <div dangerouslySetInnerHTML={{ __html: bioPost }} />
-      </main>
+        <main className={styles.subpage}>
 
-    </div>
+          <div dangerouslySetInnerHTML={{ __html: bioPost }} />
+        </main>
+
+      </div>
+    </>
   )
 }
 
