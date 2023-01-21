@@ -20,7 +20,6 @@ export async function getStaticProps() {
 }
 
 export default function Home({ data }) {
-  console.log("BLOG DATA", data)
   function formatDate(date) {
     var d = new Date(date),
       month = '' + (d.getMonth() + 1),
@@ -35,6 +34,10 @@ export default function Home({ data }) {
     return [year, month, day].join('-');
   }
 
+  useEffect(()=> {
+    console.log("BLOG DATA", data)
+
+  }, [data])
 
   return (
     <>
