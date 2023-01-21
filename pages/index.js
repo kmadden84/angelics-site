@@ -20,7 +20,7 @@ export async function getStaticProps() {
 }
 
 export default function Home({ data }) {
-
+  console.log("BLOG DATA", data)
   function formatDate(date) {
     var d = new Date(date),
       month = '' + (d.getMonth() + 1),
