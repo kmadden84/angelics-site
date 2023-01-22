@@ -25,7 +25,7 @@ export default function Footer() {
         {
           links?.items?.map(socialink => (
 
-            <a className="social-link" href={`${socialink?.fields?.socialLink}`} target="_blank"> <img src={`${socialink?.fields?.socialImage?.fields?.file?.url}`} width="60" height="60" /></a>
+            <a className="social-link" href={`${socialink?.fields?.socialLink}`} target="_blank"> <img src={`${socialink?.fields?.socialImage?.fields?.file?.url}`} width="45" height="45" alt={`${socialink?.fields?.socialName}`} /></a>
 
           ))
 
