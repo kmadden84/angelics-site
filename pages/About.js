@@ -11,7 +11,6 @@ export default function About() {
 
   function fetchPost(post) {
     const data = fetchEntry(post).then((entry) => {
-      console.log("ENTRY", entry)
       const rawRichTextField = entry.fields.biography;
       setBlogData(entry.fields)
       return documentToHtmlString(rawRichTextField);

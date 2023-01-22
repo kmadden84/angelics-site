@@ -32,6 +32,8 @@ export default function Home({ data }) {
       day = '0' + day;
 
     return [year, month, day].join('-');
+
+
   }
 
   return (
@@ -50,7 +52,7 @@ export default function Home({ data }) {
           <h1 className={styles.title}>Welcome to Angelica's Blog!</h1>
 
           {data?.map((item, index) => {
-            if (index <= 4 && item.fields.date) return (
+            if (index <= 2 && item.fields.date) return (
               <div className={styles.card}>
                 <Link
                   href={{
