@@ -15,7 +15,7 @@ export async function getStaticProps() {
   };
 }
 
-export default function Bkigs({ data }) {
+export default function Blogs({ data }) {
   function formatDate(date) {
     var d = new Date(date),
       month = '' + (d.getMonth() + 1),
@@ -34,7 +34,7 @@ export default function Bkigs({ data }) {
   return (
     <>
       {/* <Header /> */}
-      <div className={styles.container}>
+      <div className={`${styles.container} blog-page`}>
         <Head>
           <title>Blog Page</title>
           <meta name="description" content="Blogs by Angelica Rockford" />
@@ -43,10 +43,10 @@ export default function Bkigs({ data }) {
 
         <main className={styles.main}>
           <h2 className={styles.title}>All Blogs</h2>
-          <div className="blog-container">
+          <div className="blog-container blog-page">
             {data?.map((item, index) => {
               if (item.fields.date) return (
-                <div className={styles.card}>
+                <div className="blog-page-card">
                   <Link
                     href={{
                       pathname: "/blog/[slug]",

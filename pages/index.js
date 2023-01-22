@@ -34,11 +34,6 @@ export default function Home({ data }) {
     return [year, month, day].join('-');
   }
 
-  useEffect(()=> {
-    console.log("BLOG DATA", data)
-
-  }, [data])
-
   return (
     <>
       {/* <Header /> */}

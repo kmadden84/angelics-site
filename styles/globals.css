@@ -22,6 +22,51 @@ a {
   display: flex;
   width: 100%;
 }
+.blog-container.blog-page {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.blog-page-card {
+  margin: 1rem;
+  text-align: left;
+  color: inherit;
+  text-decoration: none;
+  border: 1px solid #eaeaea;
+  border-radius: 10px;
+  /* transition: color 0.15s ease, border-color 0.15s ease !important; */
+  cursor: pointer;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background: #D8A7B1;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: 0.5s;
+  padding: 20px;
+  align-self: stretch;
+  flex: 29%;
+}
+.blog-page-card:hover {
+  background-color: #FFF !important;
+  color: #0070f3;
+  border-color: #0070f3;
+}
+.social-links {
+  display: flex;
+  justify-content: flex-end;
+  text-align: right;
+  margin-right: 0;
+  justify-self: flex-end;
+  position: absolute;
+  right: 10%;
+  top: 10px;
+}
+.social-links a {
+  margin-left: 10px;
+}
 
 * {
   box-sizing: border-box;

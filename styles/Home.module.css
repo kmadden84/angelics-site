@@ -38,7 +38,10 @@ a.header-link.active {
   border-top: 1px solid #eaeaea;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
+
+
 
 .footer a {
   display: flex;
@@ -112,8 +115,27 @@ a.header-link.active {
   font-weight: bold;
   transition: 0.5s;
 }
+.blog-page-card {
+  margin: 1rem;
+  text-align: left;
+  color: inherit;
+  text-decoration: none;
+  border: 1px solid #eaeaea;
+  border-radius: 10px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+  cursor: pointer;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 33.3%;
+  background: #D8A7B1;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: 0.5s;
+}
 .card:hover {
   background-color: #FFF;
+
 }
 .card > div {
   width: 100%;
@@ -156,7 +178,7 @@ a.header-link.active {
 
 .logo {
   height: 1em;
-  margin-left: 0.5rem;
+  margin: 0 auto;
 }
 
 @media (max-width: 600px) {
