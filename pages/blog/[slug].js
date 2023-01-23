@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router'
 import { fetchEntry } from '../../utils/fetchEntry';
 import { BLOCKS } from '@contentful/rich-text-types';
-import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 
 
@@ -20,13 +20,11 @@ export default function Slug(props) {
 
 
   const [blogPost, setBlogPost] = useState(null);
-  const [blogData, setBlogData] = useState(null);
 
   function fetchPost(post) {
     const data = fetchEntry(post).then((entry) => {
       const rawRichTextField = entry.fields.body;
-      setBlogData(entry.fields)
-      return documentToHtmlString(rawRichTextField);
+      return rawRichTextField;
     })
       .then((renderedHtml) => {
         setBlogPost(renderedHtml)
@@ -34,30 +32,27 @@ export default function Slug(props) {
   }
 
 
-
-
-  // useEffect(() => {
-  //   window.onbeforeunload = function () {
-  //     if (router?.query?.postId) fetchPost(router?.query?.slug)
-  //   };
-
-  //   return () => {
-  //     window.onbeforeunload = null;
-  //   };
-  // }, []);
-
-
   useEffect(() => {
-    if (!blogData || !blogPost) fetchPost(router?.query?.postId)
-    console.log(blogData)
-    console.log(router)
-  }, [blogData, blogPost, router?.query?.postId])
+    if (!blogPost) fetchPost(router?.query?.postId)
+  }, [blogPost, router?.query?.postId])
 
   const options = {
     renderNode: {
       [BLOCKS.PARAGRAPH]: (node, children) => (
         <p>{children}</p>
       ),
+
+      [BLOCKS.EMBEDDED_ASSET]: (node, children) => {
+        // render the EMBEDDED_ASSET as you need
+        return (
+          <img
+            src={`https://${node?.data?.target?.fields?.file?.url}` ?? `https://${blogPost?.blogImage?.fields?.file?.url}`}
+            height={node?.data?.target?.fields?.file?.details?.image?.height}
+            width={node?.data?.target?.fields?.file?.details?.image?.width}
+            alt={node?.data?.target?.fields?.description}
+          />
+        );
+      },
     },
   };
 
@@ -78,9 +73,9 @@ export default function Slug(props) {
           <p>{blogPost?.fields?.author}</p>
           <p>{blogPost?.fields?.title}</p>
           <article>
-            {blogData?.blogImage?.fields?.file?.url ? <div style={{ width: '25%', float: 'left', paddingRight: '20px' }}><img src={blogData?.blogImage?.fields?.file?.url} style={{ maxWidth: '100%' }} /></div> : null}
-
-            <div dangerouslySetInnerHTML={{ __html: blogPost }} />
+            {/* {blogPost?.blogImage?.fields?.file?.url ? <div style={{ width: '25%', float: 'left', paddingRight: '20px' }}><img src={blogPost?.blogImage?.fields?.file?.url} style={{ maxWidth: '100%' }} /></div> : null} */}
+            {documentToReactComponents(blogPost, options)}
+            {/* <div dangerouslySetInnerHTML={{ __html: blogPost }} /> */}
           </article>
         </main>
 
