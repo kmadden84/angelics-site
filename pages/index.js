@@ -1,23 +1,18 @@
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
-import React, { useEffect, useState } from "react";
-import Header from "../components/header/Header";
-import { createClient } from "contentful";
+import React from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { fetchEntries } from "../utils/fetchEntries";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const entries = await fetchEntries();
 
   return {
     props: {
       data: entries,
-    },
-    revalidate: 300, // In seconds
-
+    }
   };
 }
 
