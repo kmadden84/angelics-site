@@ -33,8 +33,8 @@ export default function Home({ data }) {
 
     return [year, month, day].join('-');
 
-
   }
+  console.log("blog data", data)
 
   return (
     <>
