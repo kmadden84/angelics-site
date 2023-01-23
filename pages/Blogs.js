@@ -5,7 +5,7 @@ import Link from "next/link";
 import { fetchEntries } from "../utils/fetchEntries";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const entries = await fetchEntries();
 
   return {
