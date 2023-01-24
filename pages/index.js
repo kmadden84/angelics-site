@@ -7,16 +7,17 @@ import { fetchEntries } from "../utils/fetchEntries";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export async function getServerSideProps() {
-  const entries = await fetchEntries();
-
+  const entries = await fetchEntries('blogs');
+  const avatar = await fetchEntries('avatar');
   return {
     props: {
       data: entries,
+      avatar: avatar
     }
   };
 }
 
-export default function Home({ data }) {
+export default function Home({ data, avatar }) {
   function formatDate(date) {
     var d = new Date(date),
       month = '' + (d.getMonth() + 1),
@@ -31,8 +32,6 @@ export default function Home({ data }) {
     return [year, month, day].join('-');
 
   }
-  console.log("blog data", data)
-
   return (
     <>
       {/* <Header /> */}
@@ -46,6 +45,9 @@ export default function Home({ data }) {
         </Head>
 
         <main className={styles.main}>
+          <div className="avatar-photo" style={{ backgroundImage: `url("https:${avatar?.[0]?.fields?.picture?.fields?.file?.url.toString()}")` }}>
+
+          </div>
           <h1 className={styles.title}>Welcome to Angelica's Blog!</h1>
 
           {data?.map((item, index) => {
@@ -66,41 +68,6 @@ export default function Home({ data }) {
 
             )
           })}
-          {/* 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div> */}
         </main>
       </div>
     </>
