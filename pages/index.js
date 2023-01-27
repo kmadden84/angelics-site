@@ -1,9 +1,9 @@
 import Head from "next/head";
-import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import React from "react";
 import Link from "next/link";
 import { fetchEntries } from "../utils/fetchEntries";
+import formatDate from "../utils/formatDate";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export async function getServerSideProps() {
@@ -18,20 +18,6 @@ export async function getServerSideProps() {
 }
 
 export default function Home({ data, avatar }) {
-  function formatDate(date) {
-    var d = new Date(date),
-      month = '' + (d.getMonth() + 1),
-      day = '' + d.getDate(),
-      year = d.getFullYear();
-
-    if (month.length < 2)
-      month = '0' + month;
-    if (day.length < 2)
-      day = '0' + day;
-
-    return [year, month, day].join('-');
-
-  }
   return (
     <>
       {/* <Header /> */}

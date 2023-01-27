@@ -82,7 +82,17 @@ a {
   background-position-x: 50%;
   border-radius: 50%;
 }
-
+.center-text {
+  text-align: center;
+}
+.center-text.h2 {
+  margin-bottom: 10px;
+}
+.center-image {
+  margin: 0 auto;
+  display: block;
+  margin-bottom: 20px;
+}
 * {
   box-sizing: border-box;
 }
