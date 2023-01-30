@@ -41,13 +41,13 @@ export default function About() {
 
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className={styles.container}>
-        <div className="avatar-photo" style={{ backgroundImage: `url("https:${aboutImg?.[0]?.fields?.aboutPic?.fields?.file?.url.toString()}")` }}></div>
+      <div className={`${styles.container} about`}>
+        {/* <div className="avatar-photo" style={{ backgroundImage: `url("https:${aboutImg?.[0]?.fields?.aboutPic?.fields?.file?.url.toString()}")` }}></div> */}
 
 
 
-        <main className={styles.subpage}>
-
+        <main className="about-page">
+          <img src={`https:${aboutImg?.[0]?.fields?.aboutPic?.fields?.file?.url.toString()}`} className="about-pic" />
           <div dangerouslySetInnerHTML={{ __html: bioPost }} />
         </main>
 
